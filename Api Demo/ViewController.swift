@@ -22,11 +22,13 @@ class ViewController: UIViewController {
             }else {
                 if let urlContent = data{
                     do {
-                        let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers)
+                        let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                         print(jsonResult)
 //                        print(jsonResult["name"] as! String)
                         
-                        if let description
+                        if let description = ((jsonResult["weather"] as? NSArray)?[0] as? NSDictionary)?["description"] as? String{
+                            print(description)
+                        }
                         
                         
 
