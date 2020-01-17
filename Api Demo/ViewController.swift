@@ -13,6 +13,31 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=aa076db80cabf4996c9703bf1126af4e")!
+        
+        let task  = URLSession.shared.dataTask(with: url) {(data, response , error) in
+            if let error  = error {
+                print(error)
+            }else {
+                if let urlContent = data{
+                    do {
+                        let jsonResult = try JSONSerialization.jsonObject(with: urlContent, options: JSONSerialization.ReadingOptions.mutableContainers)
+                        print(jsonResult)
+//                        print(jsonResult["name"] as! String)
+                        
+                        if let description
+                        
+                        
+
+                    }catch {
+                        print(error)
+                    }
+                }
+            }
+        }
+        //start the task
+        task.resume()
     }
 
 
